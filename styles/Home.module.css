@@ -1,141 +1,546 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+/* ================= NAVBAR (PREMIUM DARK BROWN) ================= */
+.header {
+  width: 100%;
+  padding: 14px 0;
+  background: var(--dark-brown);
+  color: var(--text-light);
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
-.main {
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.logo:hover {
+  color: var(--primary-color);
+}
+
+.navLinks a {
+  margin-left: 25px;
+  font-size: 1rem;
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.navLinks a:hover {
+  color: var(--primary-color);
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .navLinks a {
+    margin-left: 18px;
+  }
+}
+/* ================= HERO SECTION ================= */
+.hero {
+  min-height: 95vh;
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  background: var(--secondary-color);
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Smooth animated background waves */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(230, 57, 70, 0.18),
+    transparent 70%
+  );
+  animation: bgMove 10s infinite linear alternate;
+  z-index: 0;
+}
+
+@keyframes bgMove {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -40px) scale(1.1); }
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
 }
 
-.intro {
+/* LEFT TEXT */
+.heroText {
+  flex: 1;
+  max-width: 580px;
+}
+
+.headline {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--dark-brown);
+}
+
+.name {
+  background: linear-gradient(90deg, var(--primary-color), #ff7f7f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subline {
+  margin-top: 12px;
+  font-size: 1.6rem;
+  color: var(--dark-brown);
+  font-weight: 500;
+}
+
+.roleDynamic {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.heroDesc {
+  margin-top: 18px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* BUTTONS */
+.heroButtons {
+  margin-top: 35px;
+  display: flex;
+  gap: 14px;
+}
+
+.btnPrimary {
+  background: var(--primary-color);
+  color: #fff !important;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  transition: var(--transition);
+}
+
+.btnPrimary:hover,
+.btnPrimary:active {
+  background: #c72634 !important;
+  transform: translateY(-2px) !important;
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.btnOutline:hover,
+.btnOutline:active {
+  background: var(--primary-color) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+/* RIGHT SIDE PROFILE IMAGE */
+.heroVisual {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.glowCircle {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.25), transparent 70%);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.heroProfile {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.heroProfile:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .heroInner {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .heroProfile {
+    width: 260px;
+    height: 260px;
+  }
+
+  .headline {
+    font-size: 2.5rem;
+  }
+}
+
+/* ================= PROJECTS / SLIDER ================= */
+
+/* Section background must be white */
+.projects {
+  padding: 90px 0;
+  background: #ffffff38; /* section background = white */
+}
+
+/* Title */
+.projects h3 {
+ text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--dark-brown);
+
+}
+
+/* Slider wrapper */
+.sliderWrapper {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+/* The horizontal track */
+.slider {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  cursor: grab;
+  padding: 8px 6px;
+}
+
+/* Card (brown background) */
+.projectCard {
+  min-width: 320px;
+  max-width: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--dark-brown);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s;
+  will-change: transform;
+
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  align-items: stretch;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+/* Inner padding so shine/tilt works visually */
+.cardInner {
+  padding: 24px;
+}
+
+/* Headline + description */
+.projectCard h5 {
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.projectCard p {
+  color: rgba(255,255,255,0.92);
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.projectCard small {
+  color: rgba(255,255,255,0.75);
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  font-size: 0.86rem;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+/* Hover / active visual */
+.projectCard:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 22px 60px rgba(17, 11, 9, 0.18);
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+/* subtle inner sheen (pseudo-element) */
+.projectCard::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 160%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.02) 40%, transparent 60%);
+  transform: rotate(-12deg);
+  pointer-events: none;
+  transition: transform 0.6s ease;
+  mix-blend-mode: overlay;
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
+/* stronger sheen on hover */
+.projectCard:hover::after {
+  transform: rotate(-12deg) translateX(12%);
+}
+
+/* tiny entry animation (fade/slide) */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.projectCard { animation: cardEntrance 0.5s ease forwards; }
+
+/* Responsive behavior */
+@media (max-width: 992px) {
+  .slider { gap: 18px; padding: 6px 0; }
+  .projectCard, .projectCard .cardInner { min-width: 280px; max-width: 280px; padding: 18px; }
+}
+
+@media (max-width: 576px) {
+  .slider { gap: 14px; }
+  .projectCard, .projectCard .cardInner { min-width: 240px; max-width: 240px; padding: 14px; }
+}
+
+
+/* Preview Image on Top */
+.cardImage {
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  height: 160px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+/* Zoom image on hover */
+.projectCard:hover .cardImage img {
+  transform: scale(1.1);
+}
+
+/* ================= CONTACT SECTION ================= */
+
+.contact {
+  padding: 90px 0;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
+  /* SAME gradient as your Hero section */
+}
+
+.contact h3 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--dark-brown);
+}
+
+/* Contact Card */
+.contactCard {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Fields */
+.contactCard input,
+.contactCard textarea {
+  border-radius: 12px !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+  padding: 12px !important;
+  font-size: 0.95rem;
+}
+
+.contactCard input:focus,
+.contactCard textarea:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.3) !important;
+}
+
+/* ========== BUTTON (THEMED + ANIMATED + PREMIUM) ========== */
+.contactCard button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+
+  background: var(--primary-color);
+  color: var(--text-light);
+  font-weight: 600;
+
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+/* Hover */
+.contactCard button:hover {
+ background: var(--primary-color) !important; /* deep red */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(230, 57, 70, 0.35);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* Active */
+.contactCard button:active {
+  transform: translateY(0);
+ background: var(--primary-color) !important; /* deep red */
+  box-shadow: 0 3px 8px rgba(59, 47, 47, 0.25); /* brown shadow */
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+
+/* ================= FOOTER ================= */
+
+.footer {
+  background: var(--dark-brown);
+  padding: 35px 0;
+  text-align: center;
+  border-top: 3px solid var(--primary-color);
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.footerText {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.footerText span {
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: 0.3s ease;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+.footerText span:hover {
+  letter-spacing: 0.8px;
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+/* ================= ABOUT SECTION ================= */
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.about {
+  padding: 90px 0;
+ background: #ffffff38;
+}
+
+.about h3 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 26px;
+  color: var(--dark-brown);
+  font-size: 1.9rem;
+}
+
+/* Premium centered text box */
+.aboutText {
+  max-width: 780px;
+  margin: auto;
+  padding: 24px 28px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.06);
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--dark-brown);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+/* Hover subtle glow */
+.aboutText:hover {
+  box-shadow: 0 14px 40px rgba(230, 80, 57, 0.18); /* red-ish glow */
+  transform: translateY(-4px);
+}
+
+
+/* ================= SKILLS SECTION ================= */
+
+.skills {
+  padding: 80px 0;
+  /* SAME gradient as Contact section */
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
+}
+
+.skills h3{
+   text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--dark-brown);
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+/* PREMIUM SKILL CARD */
+.skillCard {
+  background: var(--dark-brown);; /* clean white */
+  padding: 18px 20px;
+  text-align: center;
+  border-radius: 14px;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: .35s;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* PREMIUM HOVER */
+.skillCard:hover {
+  transform: translateY(-6px);
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  box-shadow: 0 10px 28px rgba(230, 57, 70, 0.35); /* red shadow */
+  border-color: var(--primary-color);
 }
