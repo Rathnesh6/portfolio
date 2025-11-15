@@ -103,7 +103,7 @@ export default function Home() {
 
               <div className={styles.heroButtons}>
                 <Button href="#contact" className={styles.btnPrimary}>Let’s Work Together</Button>
-                <Button href="/resume.pdf" download className={styles.btnOutline}>Download CV</Button>
+                <a href="/resume.pdf" download className={styles.btnOutline}>  Download CV </a>
               </div>
             </motion.div>
 
