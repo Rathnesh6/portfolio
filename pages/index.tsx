@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 import Image from 'next/image';
-import styles from '@/styles/home.module.css';
+import styles from '@/styles/Home.module.css';
 
 export default function Home() {
   const [typing, setTyping] = useState('');
