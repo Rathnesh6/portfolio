@@ -104,6 +104,7 @@ export default function Home() {
         <meta name="twitter:image" content="/myprofile.jpg" />
 
         <link rel="canonical" href="https://rathnesh-creatives-portfolio.vercel.app" />
+         <link rel="icon" href="/favicon.ico"/>
       </Head>
       <main>
         {/* ====== HEADER ====== */}
