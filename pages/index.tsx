@@ -12,6 +12,7 @@ export default function Home() {
   const phrases = ['Backend Developer', 'API Specialist', 'Freelancer'];
   const timerRef = useRef<number | null>(null);
   const [expanded, setExpanded] = useState(false); // control navbar state
+  const navRef = useRef<HTMLDivElement | null>(null);
 
   // Typing Effect
   useEffect(() => {
@@ -62,21 +63,38 @@ export default function Home() {
       alert('Could not send the message.');
     }
   }
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setExpanded(false);
+      }
+    };
 
+    if (expanded) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [expanded]);
   return (
     <main>
       {/* ====== HEADER ====== */}
-      <Navbar expand="lg" className={styles.header} variant="dark" fixed="top" expanded={expanded}>
+      <Navbar expand="lg" className={styles.header} variant="dark" fixed="top" expanded={expanded} ref={navRef}>
             <Container>
               <Navbar.Brand href="#" className={styles.logo}>
                 Rathnesh
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav"   onClick={() => setExpanded(!expanded)}/>
+              <Navbar.Toggle aria-controls="basic-navbar-nav"   onClick={() => setExpanded(!expanded)} />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
                   <Nav.Link href="#about" className={styles.navLink} onClick={() => setExpanded(false)}>About Me</Nav.Link>
                   <Nav.Link href="#skills" className={styles.navLink} onClick={() => setExpanded(false)}>Skills</Nav.Link>
                   <Nav.Link href="#projects" className={styles.navLink} onClick={() => setExpanded(false)}>Projects</Nav.Link>
+                  <Nav.Link href="#contact" className={styles.navLink} onClick={() => setExpanded(false)}>Contact</Nav.Link>
                   <Nav.Link href="#contact" className={styles.navLink} onClick={() => setExpanded(false)}>Contact</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
