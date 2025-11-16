@@ -11,6 +11,7 @@ export default function Home() {
   const [typing, setTyping] = useState('');
   const phrases = ['Backend Developer', 'API Specialist', 'Freelancer'];
   const timerRef = useRef<number | null>(null);
+  const [expanded, setExpanded] = useState(false); // control navbar state
 
   // Typing Effect
   useEffect(() => {
@@ -65,18 +66,18 @@ export default function Home() {
   return (
     <main>
       {/* ====== HEADER ====== */}
-      <Navbar expand="lg" className={styles.header} variant="dark" fixed="top">
+      <Navbar expand="lg" className={styles.header} variant="dark" fixed="top" expanded={expanded}>
             <Container>
               <Navbar.Brand href="#" className={styles.logo}>
                 Rathnesh
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Toggle aria-controls="basic-navbar-nav"   onClick={() => setExpanded(!expanded)}/>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                  <Nav.Link href="#about" className={styles.navLink}>About Me</Nav.Link>
-                  <Nav.Link href="#skills" className={styles.navLink}>Skills</Nav.Link>
-                  <Nav.Link href="#projects" className={styles.navLink}>Projects</Nav.Link>
-                  <Nav.Link href="#contact" className={styles.navLink}>Contact</Nav.Link>
+                  <Nav.Link href="#about" className={styles.navLink} onClick={() => setExpanded(false)}>About Me</Nav.Link>
+                  <Nav.Link href="#skills" className={styles.navLink} onClick={() => setExpanded(false)}>Skills</Nav.Link>
+                  <Nav.Link href="#projects" className={styles.navLink} onClick={() => setExpanded(false)}>Projects</Nav.Link>
+                  <Nav.Link href="#contact" className={styles.navLink} onClick={() => setExpanded(false)}>Contact</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>

@@ -1,6 +1,6 @@
 /* Header/Navbar */
 .header {
-  background-color: var(--dark-brown);
+  background-color: var(--dark-brown) !important;
   padding: 14px 0;
   position: fixed;
   width: 100%;
@@ -11,25 +11,25 @@
 
 /* Logo */
 .logo {
-  color: var(--text-light);
-  font-weight: 700;
-  text-decoration: none;
+  color: var(--text-light) !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
   transition: var(--transition);
 }
 
 .logo:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 
 /* Nav links */
 .navLink {
-  color: var(--text-light);
-  font-weight: 500;
-  transition: var(--transition);
+  color: var(--text-light) !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
 }
 
 .navLink:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 
 /* ================= HERO SECTION ================= */
