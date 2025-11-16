@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button, Form ,Navbar ,Nav} from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import Image from 'next/image';
 import styles from '@/styles/Home.module.css';
 import Head from 'next/head';
@@ -108,8 +108,8 @@ export default function Home() {
       </Head>
       <main>
         {/* ====== HEADER ====== */}
-        <Navbar expand="lg" className={styles.header} variant="dark" fixed="top" expanded={expanded} ref={navRef}>
-              <Container>
+        <Navbar expand="lg" className={styles.header} variant="dark" fixed="top" expanded={expanded} >
+              <Container ref={navRef}>
                 <Navbar.Brand href="#" className={styles.logo}>
                   Rathnesh
                 </Navbar.Brand>
@@ -153,11 +153,11 @@ export default function Home() {
 
                 <div className={styles.heroButtons}>
                   <Button href="#contact" className={styles.btnPrimary}>Let’s Work Together</Button>
-                  <a href="/resume.pdf" download className={styles.btnOutline}>  Download CV </a>
+                  <a href="/resume.pdf" download className={styles.btnOutline} role="button" aria-label="Download resume">Download CV</a>
                 </div>
               </motion.div>
 
-              {/* RIGHT SIDE IMAGE */}
+              {/* RIGHT SIDE IMAGE */}  
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -216,6 +216,53 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ====== SERVICES SECTION ====== */}
+        <section id="services" className={styles.services}>
+          <div className="container-compact">
+            <h3>What I Offer</h3>
+
+            <div className={styles.serviceGrid}>
+              {[
+                {
+                  title: "Backend Development",
+                  desc: "Building fast, secure and scalable backend systems using Node.js, Express.js, PHP and MySQL."
+                },
+                {
+                  title: "API Development",
+                  desc: "REST API design, authentication (JWT), role-based access, validation, error handling."
+                },
+                {
+                  title: "Database Design",
+                  desc: "MySQL schema design, indexing, optimization, migrations, and performance tuning."
+                },
+                {
+                  title: "Deployment & Hosting",
+                  desc: "Deploying apps on Vercel, cPanel, VPS, Linux server configuration and optimization."
+                },
+                {
+                  title: "Bug Fixing / Optimization",
+                  desc: "Fix backend errors, optimize slow APIs, secure endpoints, remove vulnerabilities."
+                },
+                {
+                  title: "Freelance Project Support",
+                  desc: "End-to-end backend solutions for startups, businesses, and individual clients."
+                }
+              ].map((service, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.serviceCard}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <h4>{service.title}</h4>
+                  <p>{service.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ====== PROJECTS (SLIDER) ====== */}
         <section id="projects" className={styles.projects}>
           <div className="container-compact">
@@ -259,6 +306,53 @@ export default function Home() {
         </section>
 
 
+        {/* ====== TESTIMONIALS SECTION ====== */}
+        <section id="testimonials" className={styles.testimonials}>
+          <div className="container-compact">
+            <h3>What People Say</h3>
+
+            <div className={styles.testimonialGrid}>
+              {[
+                {
+                  name: "Ajay Kumar",
+                  role: "Startup Founder",
+                  text: "Rathnesh built a backend API for my startup — secure, fast, and delivered before deadline. Highly recommended!",
+                  img: "/testimonials-image/user1.png"
+                },
+                {
+                  name: "Sandeep Shetty",
+                  role: "Business Owner",
+                  text: "Very professional and excellent communication. Solved all backend issues and optimized our database performance.",
+                  img: "/testimonials-image/user2.png"
+                },
+                {
+                  name: "Meera D",
+                  role: "Project Manager",
+                  text: "One of the best backend developers I worked with. Clean code, scalable architecture, and reliable delivery.",
+                  img: "/testimonials-image/user3.jpg"
+                }
+              ].map((t, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.testimonialCard}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <div className={styles.testimonialTop}>
+                    <img src={t.img} alt={t.name} className={styles.testimonialImg} />
+                    <div>
+                      <h4>{t.name}</h4>
+                      <small>{t.role}</small>
+                    </div>
+                  </div>
+
+                  <p className={styles.testimonialText}>{t.text}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
 
         {/* ====== CONTACT ====== */}
