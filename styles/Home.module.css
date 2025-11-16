@@ -1,45 +1,37 @@
-/* ================= NAVBAR (PREMIUM DARK BROWN) ================= */
+/* Header/Navbar */
 .header {
-  width: 100%;
+  background-color: var(--dark-brown);
   padding: 14px 0;
-  background: var(--dark-brown);
-  color: var(--text-light);
   position: fixed;
+  width: 100%;
   top: 0;
   z-index: 999;
   box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
+/* Logo */
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
   color: var(--text-light);
+  font-weight: 700;
   text-decoration: none;
   transition: var(--transition);
 }
+
 .logo:hover {
   color: var(--primary-color);
 }
 
-.navLinks a {
-  margin-left: 25px;
-  font-size: 1rem;
+/* Nav links */
+.navLink {
   color: var(--text-light);
-  text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
 }
 
-.navLinks a:hover {
+.navLink:hover {
   color: var(--primary-color);
 }
 
-/* For mobile */
-@media (max-width: 768px) {
-  .navLinks a {
-    margin-left: 18px;
-  }
-}
 /* ================= HERO SECTION ================= */
 .hero {
   min-height: 95vh;
@@ -159,6 +151,7 @@
   padding: 12px 28px;
   border-radius: 10px;
   transition: var(--transition);
+   text-decoration: none !important;
 }
 
 .btnOutline:hover,

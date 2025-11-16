@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form ,Navbar ,Nav} from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 import Image from 'next/image';
@@ -65,16 +65,22 @@ export default function Home() {
   return (
     <main>
       {/* ====== HEADER ====== */}
-      <header className={styles.header}>
-        <div className="container-compact d-flex align-items-center justify-content-between">
-          <a href="#" className={styles.logo}>Rathnesh</a>
-          <nav className={styles.navLinks}>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-      </header>
-
+      <Navbar expand="lg" className={styles.header} variant="dark" fixed="top">
+            <Container>
+              <Navbar.Brand href="#" className={styles.logo}>
+                Rathnesh
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ms-auto">
+                  <Nav.Link href="#about" className={styles.navLink}>About Me</Nav.Link>
+                  <Nav.Link href="#skills" className={styles.navLink}>Skills</Nav.Link>
+                  <Nav.Link href="#projects" className={styles.navLink}>Projects</Nav.Link>
+                  <Nav.Link href="#contact" className={styles.navLink}>Contact</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+      </Navbar>
       {/* ====== HERO SECTION (PREMIUM) ====== */}
       <section className={styles.hero}>
         <div className="container-compact">
@@ -129,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* ====== About Me SECTION ====== */}
-      <section className={styles.about}>
+      <section  id="about" className={styles.about}>
         <div className="container-compact">
           <h3 className="section-title">About Me</h3>
           <p className={styles.aboutText}>
@@ -141,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* ====== SKILL SECTION  ====== */}
-      <section className={styles.skills}>
+      <section  id="skills" className={styles.skills}>
         <div className="container-compact">
           <h3 className="section-title">Skills & Expertise</h3>
 
