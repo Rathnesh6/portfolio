@@ -118,9 +118,10 @@ export default function Home() {
                   <Nav className="ms-auto">
                     <Nav.Link href="#about" className={styles.navLink} onClick={() => setExpanded(false)}>About Me</Nav.Link>
                     <Nav.Link href="#skills" className={styles.navLink} onClick={() => setExpanded(false)}>Skills</Nav.Link>
+                    <Nav.Link href="#services" className={styles.navLink} onClick={() => setExpanded(false)}>Services</Nav.Link>
                     <Nav.Link href="#projects" className={styles.navLink} onClick={() => setExpanded(false)}>Projects</Nav.Link>
                     <Nav.Link href="#contact" className={styles.navLink} onClick={() => setExpanded(false)}>Contact</Nav.Link>
-                    <Nav.Link href="#contact" className={styles.navLink} onClick={() => setExpanded(false)}>Contact</Nav.Link>
+                    
                   </Nav>
                 </Navbar.Collapse>
               </Container>
